@@ -1,20 +1,178 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
+  <h1>Welcome to {{title}}!</h1>
+  <button md-button (click)="openSnackBar(message)">Show snack-bar</button>
 </div>
-<h2>Here are some links to help you start: </h2>
+
+<h2>Here are some examples of material2: </h2>
 <ul>
   <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+    <h2>Button</h2>
+    <!-- Button styles: md-button, md-raised-button, md-icon-button, md-fab, md-mini-fab -->
+    <button md-raised-button>Click me!</button>
+    <md-button-toggle>Toggle me!</md-button-toggle>
   </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="http://angularjs.blogspot.ca/">Angular blog</a></h2>
-  </li>
-</ul>
 
+  <li>
+    <h2>Checkbox</h2>
+    <md-checkbox>Check me!</md-checkbox>
+  </li>
+
+  <li>
+    <h2>MdAutocomplete</h2>
+    <md-input-container>
+      <input mdInput placeholder="State" [mdAutocomplete]="auto" [formControl]="stateCtrl">
+    </md-input-container>
+    <md-autocomplete #auto="mdAutocomplete">
+      <md-option *ngFor="let state of filteredStates | async" [value]="state">
+        {{ state }}
+      </md-option>
+    </md-autocomplete>
+  </li>
+
+  <li>
+    <h2>Input</h2>
+    <md-input-container>
+      <input mdInput placeholder="Favorite food" value="Sushi">
+    </md-input-container>
+  </li>
+
+  <li>
+    <md-card class="result">
+      <md-card-content>
+        <h2 class="example-h2">Result</h2>
+
+        <md-slider
+            class="example-margin"
+            [max]="100"
+            [min]="0"
+            [step]="5"
+            [thumb-label]="true"
+            [value]="sliderValue">
+        </md-slider>
+      </md-card-content>
+    </md-card>
+  </li>
+
+  <li>
+    <h2>Menu</h2>
+    <button md-button [mdMenuTriggerFor]="menu">Menu</button>
+    <md-menu #menu="mdMenu">
+      <button md-menu-item>Item 1</button>
+      <button md-menu-item>Item 2</button>
+      <button md-menu-item>
+        <md-icon>notifications_off</md-icon>
+        <span>Disable alerts</span>
+      </button>
+    </md-menu>
+  </li>
+
+  <li>
+    <h2>Sidenav</h2>
+    <md-sidenav-container class="example-container">
+      <md-sidenav #sidenav class="example-sidenav">
+        Jolly good!
+      </md-sidenav>
+
+      <div class="example-sidenav-content">
+        <button type="button" md-button (click)="sidenav.open()">
+          Open sidenav
+        </button>
+      </div>
+    </md-sidenav-container>
+  </li>
+
+  <li>
+    <h2>Grid list</h2>
+    <md-grid-list cols="4" rowHeight="100px">
+      <md-grid-tile
+          *ngFor="let tile of tiles"
+          [colspan]="tile.cols"
+          [rowspan]="tile.rows"
+          [style.background]="tile.color">
+        {{tile.text}}
+      </md-grid-tile>
+    </md-grid-list>
+  </li>
+
+  <li>
+    <h2>Tab</h2>
+    <md-tab-group>
+      <md-tab label="Tab 1">Content 1</md-tab>
+      <md-tab label="Tab 2">Content 2</md-tab>
+    </md-tab-group>
+  </li>
+
+  <li>
+    <h2>Chips</h2>
+    <md-chip-list>
+      <md-chip>One fish</md-chip>
+      <md-chip>Two fish</md-chip>
+      <md-chip color="primary" selected="true">Primary fish</md-chip>
+      <md-chip color="accent" selected="true">Accent fish</md-chip>
+    </md-chip-list>    
+  </li>
+
+  <li>
+    <h2>Tooltip</h2>
+    <span mdTooltip="Tooltip!">I have a tooltip</span>
+  </li>
+
+  <li>
+    <h2>Progress bar</h2>
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+  </li>
+
+  <li>
+    <h2>Datepicker</h2>
+    <md-input-container>
+      <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+      <button mdSuffix [mdDatepickerToggle]="picker"></button>
+    </md-input-container>
+    <md-datepicker #picker></md-datepicker>
+  </li>
+
+  <li>
+    <h2>Dialog</h2>
+    <button md-button (click)="openDialog()">Open dialog</button>
+  </li>
+
+  <li>
+    <h2>Table</h2>
+    <div class="example-table-container mat-elevation-z8">
+      <md-table #table [dataSource]="dataSource">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- ID Column -->
+        <ng-container cdkColumnDef="userId">
+          <md-header-cell *cdkHeaderCellDef> ID </md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.id}} </md-cell>
+        </ng-container>
+
+        <!-- Progress Column -->
+        <ng-container cdkColumnDef="progress">
+          <md-header-cell *cdkHeaderCellDef> Progress </md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.progress}}% </md-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container cdkColumnDef="userName">
+          <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
+        </ng-container>
+
+        <!-- Color Column -->
+        <ng-container cdkColumnDef="color">
+          <md-header-cell *cdkHeaderCellDef>Color</md-header-cell>
+          <md-cell *cdkCellDef="let row" [style.color]="row.color"> {{row.color}} </md-cell>
+        </ng-container>
+
+        <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+        <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+      </md-table>
+    </div>
+  </li>
+
+</ul>
