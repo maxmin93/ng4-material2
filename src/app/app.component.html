@@ -175,4 +175,18 @@
     </div>
   </li>
 
+  <li>
+    <h2>Single Expansion Panel</h2>
+    <md-expansion-panel class="md-expansion-demo-width" #myPanel>
+      <md-expansion-panel-header>
+        <mat-panel-description>This is a panel description.</mat-panel-description>
+        <mat-panel-title>Panel Title</mat-panel-title>
+      </md-expansion-panel-header>
+        This is the content text that makes sense here.
+      <md-action-row>
+        <button md-button (click)="myPanel.expanded = false">CANCEL</button>
+        <button md-button>SAVE</button>
+      </md-action-row>
+    </md-expansion-panel>    
+  </li>
 </ul>
