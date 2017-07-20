@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 // about Table
@@ -38,6 +38,9 @@ export class AppComponent {
   exampleDatabase = new ExampleDatabase();
   dataSource: ExampleDataSource | null;
 
+  tableHeight:number = 400;
+  windowHeight:number;
+
   // about Slider
 	sliderValue = 50;
 
@@ -63,10 +66,20 @@ export class AppComponent {
   ];
 
   constructor(
+    // private cdr: ChangeDetectorRef,
+    private _element: ElementRef,
   	public snackBar: MdSnackBar,
   	public dialog: MdDialog
   ) {
-	  // about MdAutocomplete
+    // let getWindow = () => {
+    //       return window.innerHeight;
+    // };
+    // window.onresize = () => {
+    //     this.windowHeight = getWindow();
+    //     this.cdr.detectChanges();   // running change detection manually
+    // };
+
+    // about MdAutocomplete
     this.stateCtrl = new FormControl();
     this.filteredStates = this.stateCtrl.valueChanges
         .startWith(null)
@@ -77,6 +90,11 @@ export class AppComponent {
   ngOnInit() {
   	// about Table
     this.dataSource = new ExampleDataSource(this.exampleDatabase);
+  }
+
+  onResize(event) {
+    console.log( "window.innerHeight =", window.innerHeight );
+    if( window.innerHeight < this.tableHeight + 200 ) this.tableHeight = 400;
   }
 
   // about MdAutocomplete
@@ -95,6 +113,20 @@ export class AppComponent {
     this.dialog.open(DialogExampleComponent);
   }
 
+  toggleFullscreen() {
+    this.tableHeight = 700;
+
+    let elem = this._element.nativeElement.querySelector('.demo-content');
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullScreen) {
+      elem.webkitRequestFullScreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.msRequestFullScreen) {
+      elem.msRequestFullScreen();
+    }
+  }
 };
 
 

@@ -6,8 +6,36 @@
 // @import "~@angular/material/prebuilt-themes/purple-green.css";			// out-line 안보임
 */
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+/*
+// 여기다 css 쓰면 import 타이밍이 맞지않아, 화면에 나타나지 않음 => .angular-cli.json 으로 이동!!
+@import "~font-awesome/css/font-awesome.css";
+@import "~material-design-icons/iconfont/material-icons.css";
+*/
 
+/* 
+Fonts : 한국어 
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+Font : 일본어 
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+:lang(ja) {
+  font-family: "Noto Sans", "Noto Sans CJK JP", sans-serif;
+}
+Font : 중국어 (간체) 
+@import url(http://fonts.googleapis.com/earlyaccess/notosanssc.css);
+:lang(zh-Hans) {
+  font-family: "Noto Sans", "Noto Sans CJK SC", sans-serif;
+}
+*/
+@font-face { font-family: "Noto Sans"; src: url("./assets/fonts/NotoSansArmenian-Regular.ttf"); }
+@font-face { font-family: "Noto Sans Bold"; src: url("./assets/fonts/NotoSansArmenian-Bold.ttf"); }
+@font-face { font-family: "Noto Sans CJK KR"; src: url("./assets/fonts/NotoSansCJKkr-Regular.otf"); }
+@font-face { font-family: "Noto Sans CJK KR Bold"; src: url("./assets/fonts/NotoSansCJKkr-Bold.otf"); }
+
+:lang(ko) {
+  font-family: "Noto Sans", "Noto Sans CJK KR", sans-serif;
+}
 
 body { 
-	font-family: Roboto, Arial, sans-serif; 
+	font-family: "Noto Sans", "Noto Sans CJK KR", sans-serif;
 }

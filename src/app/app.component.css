@@ -39,7 +39,6 @@ h1 {
 .example-table-container {
   display: flex;
   flex-direction: column;
-  max-height: 500px;
   min-width: 300px;
 }
 .example-table-header {
@@ -58,3 +57,18 @@ h1 {
   width: 600px;
   display: block;
 }
+
+
+.demo-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.demo-content {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-left: 50px; padding-right: 50px;
+}
+
