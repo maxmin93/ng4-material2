@@ -90,11 +90,14 @@ export class AppComponent {
   ngOnInit() {
   	// about Table
     this.dataSource = new ExampleDataSource(this.exampleDatabase);
+
+    this.windowHeight = window.innerHeight;
+    console.log( "initial windowHeight =", this.windowHeight );
   }
 
   onResize(event) {
     console.log( "window.innerHeight =", window.innerHeight );
-    if( window.innerHeight < this.tableHeight + 200 ) this.tableHeight = 400;
+    if( window.innerHeight < this.windowHeight + 20 ) this.tableHeight = 400;
   }
 
   // about MdAutocomplete
