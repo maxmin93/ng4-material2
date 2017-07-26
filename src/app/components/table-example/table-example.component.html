@@ -1,0 +1,48 @@
+<div id="fullScreenTest" class="demo-content" (window:resize)="onResize($event)">
+    <md-toolbar color="primary">
+      <div class="demo-toolbar">
+        <h2>Angular Material Demos</h2>
+        <div>
+          <button md-icon-button (click)="toggleFullscreen()" title="Toggle fullscreen">
+            <md-icon class="md-24">fullscreen</md-icon>
+          </button>
+        </div>
+      </div>
+    </md-toolbar>
+
+    <h2>Table</h2>
+    <div class="example-table-container mat-elevation-z8">
+      <md-table #table [dataSource]="dataSource" [style.height.px]="tableHeight">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- ID Column -->
+        <ng-container cdkColumnDef="userId">
+          <md-header-cell *cdkHeaderCellDef> ID </md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.id}} </md-cell>
+        </ng-container>
+
+        <!-- Progress Column -->
+        <ng-container cdkColumnDef="progress">
+          <md-header-cell *cdkHeaderCellDef> Progress </md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.progress}}% </md-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container cdkColumnDef="userName">
+          <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
+        </ng-container>
+
+        <!-- Color Column -->
+        <ng-container cdkColumnDef="color">
+          <md-header-cell *cdkHeaderCellDef>Color</md-header-cell>
+          <md-cell *cdkCellDef="let row" [style.color]="row.color"> {{row.color}} </md-cell>
+        </ng-container>
+
+        <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+        <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+      </md-table>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<ul>
+  <li>
+    <h2>Snack-bar</h2>
+    <button md-raised-button (click)="openSnackBar(message)">Show snack-bar</button>
+  </li>
+
+  <li>
+    <h2>Dialog</h2>
+    <button md-button (click)="openDialog()">Open dialog</button>
+  </li>
+  
+  <li>
+    <h2>Icons</h2>
+    <i class="material-icons md-24">android</i>
+    <button md-icon-button mdTooltip="INSERT TEXT" mdTooltipPosition="above"><md-icon class="md-24">textsms</md-icon></button>
+    <button md-icon-button mdTooltip="INSERT LINK" mdTooltipPosition="above"><md-icon class="md-24">insert_link</md-icon></button>
+    <button md-icon-button mdTooltip="INSERT photo" mdTooltipPosition="above"><md-icon class="md-24">photo</md-icon></button>
+  </li>
+
+  <li>
+    <h2>Button</h2>
+    <!-- Button styles: md-button, md-raised-button, md-icon-button, md-fab, md-mini-fab -->
+    <button md-raised-button 
+      angulartics2On="click" angularticsEvent="Button_01" angularticsCategory="Buttons" [angularticsProperties]="{label: 'Click me'}">
+        Click me!</button>
+    <md-button-toggle
+      angulartics2On="click" angularticsEvent="Button_02" angularticsCategory="Buttons" [angularticsProperties]="{label: 'Toggle me'}">
+        Toggle me!</md-button-toggle>
+    <a md-raised-button
+      angulartics2On="click" angularticsEvent="Button_03" angularticsCategory="Buttons" [angularticsProperties]="{label: 'Link me'}">
+        Move to me!</a>
+  </li>
+
+  <li>
+    <h2>Checkbox</h2>
+    <md-checkbox
+      angulartics2On="click" angularticsEvent="Checkbox_01" angularticsCategory="Options" [angularticsProperties]="{label: 'Check me'}">
+        Check me!</md-checkbox>
+  </li>
+
+  <li>
+    <h2>MdAutocomplete</h2>
+    <md-input-container>
+      <input mdInput placeholder="State" [mdAutocomplete]="auto" [formControl]="stateCtrl">
+    </md-input-container>
+    <md-autocomplete #auto="mdAutocomplete">
+      <md-option *ngFor="let state of filteredStates | async" [value]="state">
+        {{ state }}
+      </md-option>
+    </md-autocomplete>
+  </li>
+
+  <li>
+    <h2>Input</h2>
+    <md-input-container>
+      <input mdInput placeholder="Favorite food" value="Sushi">
+    </md-input-container>
+  </li>
+
+  <li>
+    <md-card class="result">
+      <md-card-content>
+        <h2 class="example-h2">Result</h2>
+
+        <md-slider
+            class="example-margin"
+            [max]="100"
+            [min]="0"
+            [step]="5"
+            [thumb-label]="true"
+            [value]="sliderValue">
+        </md-slider>
+      </md-card-content>
+    </md-card>
+  </li>
+
+  <li>
+    <h2>Chips</h2>
+    <md-chip-list>
+      <md-chip>One fish</md-chip>
+      <md-chip>Two fish</md-chip>
+      <md-chip color="primary" selected="true">Primary fish</md-chip>
+      <md-chip color="accent" selected="true">Accent fish</md-chip>
+    </md-chip-list>    
+  </li>
+
+  <li>
+    <h2>Tooltip</h2>
+    <span mdTooltip="Tooltip!">I have a tooltip</span>
+  </li>
+
+  <li>
+    <h2>Progress bar</h2>
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+  </li>
+
+  <li>
+    <h2>Datepicker</h2>
+    <md-input-container>
+      <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+      <button mdSuffix [mdDatepickerToggle]="picker"></button>
+    </md-input-container>
+    <md-datepicker #picker></md-datepicker>
+  </li>
+
+</ul>

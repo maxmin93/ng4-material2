@@ -1,0 +1,55 @@
+<h2>Here are some examples of material2: </h2>
+<p>Font : <strong>Noto Sans, Noto Sans CJK KR</strong></p>
+
+<ul>
+  <li>
+    <h2>Tab</h2>
+    <md-tab-group>
+      <md-tab label="Tab 1" (click)="submitEvent('tab#01')">Content 1</md-tab>
+      <md-tab label="Tab 2" (click)="submitEvent('tab#02')">Content 2</md-tab>
+    </md-tab-group>
+  </li>
+
+  <li>
+    <h2>Single Expansion Panel</h2>
+    <md-expansion-panel class="md-expansion-demo-width" #myPanel>
+      <md-expansion-panel-header>
+        <mat-panel-description>This is a panel description.</mat-panel-description>
+        <mat-panel-title>Panel Title</mat-panel-title>
+      </md-expansion-panel-header>
+        This is the content text that makes sense here.
+      <md-action-row>
+        <button md-button (click)="myPanel.expanded = false">CANCEL</button>
+        <button md-button>SAVE</button>
+      </md-action-row>
+    </md-expansion-panel>    
+  </li>
+
+  <li>
+    <h2>Sidenav</h2>
+    <md-sidenav-container class="example-container">
+      <md-sidenav #sidenav class="example-sidenav">
+        Jolly good!
+      </md-sidenav>
+
+      <div class="example-sidenav-content">
+        <button type="button" md-button (click)="sidenav.open()">
+          Open sidenav
+        </button>
+      </div>
+    </md-sidenav-container>
+  </li>
+
+  <li>
+    <h2>Grid list</h2>
+    <md-grid-list cols="4" rowHeight="100px">
+      <md-grid-tile
+          *ngFor="let tile of tiles"
+          [colspan]="tile.cols"
+          [rowspan]="tile.rows"
+          [style.background]="tile.color">
+        {{tile.text}}
+      </md-grid-tile>
+    </md-grid-list>
+  </li>
+</ul>
