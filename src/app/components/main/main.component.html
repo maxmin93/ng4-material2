@@ -10,11 +10,18 @@
   </li>
   
   <li>
-    <h2>Icons</h2>
+    <h2>Icons and Inner link (hashtag)</h2>
     <i class="material-icons md-24">android</i>
-    <button md-icon-button mdTooltip="INSERT TEXT" mdTooltipPosition="above"><md-icon class="md-24">textsms</md-icon></button>
-    <button md-icon-button mdTooltip="INSERT LINK" mdTooltipPosition="above"><md-icon class="md-24">insert_link</md-icon></button>
-    <button md-icon-button mdTooltip="INSERT photo" mdTooltipPosition="above"><md-icon class="md-24">photo</md-icon></button>
+    <a md-icon-button mdTooltip="Help Section#01" mdTooltipPosition="above"
+      [routerLink]="['/help']" fragment="section01"><md-icon class="md-24">textsms</md-icon></a>
+    <a md-icon-button mdTooltip="Help Section#02" mdTooltipPosition="above"
+      [routerLink]="['/help']" fragment="section02"><md-icon class="md-24">insert_link</md-icon></a>
+    <a md-icon-button mdTooltip="Help Section#03" mdTooltipPosition="above"
+      [routerLink]="['/help']" fragment="section03"><md-icon class="md-24">photo</md-icon></a>
+    <a md-icon-button mdTooltip="Help Section#04" mdTooltipPosition="above"
+      [routerLink]="['/help']" fragment="section04"><md-icon class="md-24">print</md-icon></a>
+    <a md-icon-button mdTooltip="Help Section#05" mdTooltipPosition="above"
+      [routerLink]="['/help']" fragment="section05"><md-icon class="md-24">label</md-icon></a>
   </li>
 
   <li>

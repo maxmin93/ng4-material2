@@ -23,6 +23,7 @@ import { DialogExampleComponent } from './components/dialog-example/dialog-examp
 import { MainComponent } from './components/main/main.component';
 import { TableExampleComponent } from './components/table-example/table-example.component';
 import { AboutComponent } from './components/about/about.component';
+import { HelpComponent } from './components/help/help.component';
 
 import { appRoutes } from "./app.routes";
 
@@ -32,7 +33,8 @@ import { appRoutes } from "./app.routes";
     DialogExampleComponent,
     AboutComponent,
     TableExampleComponent,
-    MainComponent
+    MainComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,

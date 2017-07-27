@@ -5,12 +5,14 @@ import { DialogExampleComponent } from './components/dialog-example/dialog-examp
 import { AboutComponent } from './components/about/about.component';
 import { TableExampleComponent } from './components/table-example/table-example.component';
 import { MainComponent } from './components/main/main.component';
+import { HelpComponent } from './components/help/help.component';
 
 export const appRoutes: Routes = [
 
   { path: '',      component: MainComponent },
   { path: 'table', component: TableExampleComponent },
   { path: 'about', component: AboutComponent },
-  { path: '**', redirectTo: ''}
+  { path: 'help',  component: HelpComponent },
+  { path: '**',    redirectTo: ''}
     
 ];

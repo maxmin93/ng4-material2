@@ -1,0 +1,8 @@
+.example-card {
+  width: 400px;
+}
+
+.example-header-image {
+  background-image: url('http://lorempixel.com/50/50/animals/');
+  background-size: cover;
+}
