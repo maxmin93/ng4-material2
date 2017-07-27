@@ -1,8 +1,6 @@
 import { Component, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
-import { GoogleAnalyticsEventsService } from "./services/google-analytics-events.service";
-
 import { Angulartics2GoogleAnalytics /*, Angulartics2GoogleTagManager*/ } from 'angulartics2';
 
 // Google Analytics
@@ -17,7 +15,6 @@ export class AppComponent {
   title = 'app';
 
   constructor(
-    public googleAnalyticsEventsService: GoogleAnalyticsEventsService,
     public angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
     // private angulartics2GoogleTagManager: Angulartics2GoogleTagManager,
     public router: Router,
@@ -33,10 +30,6 @@ export class AppComponent {
   ngOnInit() {
   }
 
-  submitEvent() {
-    this.googleAnalyticsEventsService.emitEvent("testCategory", "testAction", "testLabel", 10);
-  }
-    
 };
 
 
