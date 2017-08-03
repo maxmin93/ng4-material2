@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { ElementRef, ChangeDetectorRef } from '@angular/core';
 
 import { Angulartics2 } from 'angulartics2';
 
 // about Table
+import { MdPaginator } from '@angular/material';
 import { DataSource } from '@angular/cdk';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -23,8 +24,10 @@ export class TableExampleComponent implements OnInit {
   exampleDatabase = new ExampleDatabase();
   dataSource: ExampleDataSource | null;
 
-  tableHeight:number = 400;
+  tableHeight:number = 450;
   windowHeight:number;
+
+  @ViewChild(MdPaginator) paginator: MdPaginator;
 
   constructor(    
     private angulartics2: Angulartics2,
@@ -34,7 +37,7 @@ export class TableExampleComponent implements OnInit {
 
   ngOnInit() {
   	// about Table
-    this.dataSource = new ExampleDataSource(this.exampleDatabase);
+    this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator);
 
     this.windowHeight = window.innerHeight;
     console.log( "initial windowHeight =", this.windowHeight );    
@@ -42,11 +45,11 @@ export class TableExampleComponent implements OnInit {
 
   onResize(event) {
     console.log( "window.innerHeight =", window.innerHeight );
-    if( window.innerHeight < this.windowHeight + 20 ) this.tableHeight = 400;
+    if( window.innerHeight < this.windowHeight + 20 ) this.tableHeight = 450;
   }
 
   toggleFullscreen() {
-    this.tableHeight = 700;
+    this.tableHeight = 780;
 
     let elem = this._element.nativeElement.querySelector('.demo-content');
     if (elem.requestFullscreen) {
@@ -121,13 +124,27 @@ export class ExampleDatabase {
  * should be rendered.
  */
 export class ExampleDataSource extends DataSource<any> {
-  constructor(private _exampleDatabase: ExampleDatabase) {
+  constructor(private _exampleDatabase: ExampleDatabase, private _paginator: MdPaginator) {
     super();
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
+  // connect(): Observable<UserData[]> {
+  //   return this._exampleDatabase.dataChange;
+  // }
   connect(): Observable<UserData[]> {
-    return this._exampleDatabase.dataChange;
+    const displayDataChanges = [
+      this._exampleDatabase.dataChange,
+      this._paginator.page,
+    ];
+
+    return Observable.merge(...displayDataChanges).map(() => {
+      const data = this._exampleDatabase.data.slice();
+
+      // Grab the page's slice of data.
+      const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
+      return data.splice(startIndex, this._paginator.pageSize);
+    });
   }
 
   disconnect() {}

@@ -1,7 +1,7 @@
 <div id="fullScreenTest" class="demo-content" (window:resize)="onResize($event)">
     <md-toolbar color="primary">
       <div class="demo-toolbar">
-        <h2>Angular Material Demos</h2>
+        <h2>Angular Material Demos: Table</h2>
         <div>
           <button md-icon-button (click)="toggleFullscreen()" title="Toggle fullscreen">
             <md-icon class="md-24">fullscreen</md-icon>
@@ -10,7 +10,6 @@
       </div>
     </md-toolbar>
 
-    <h2>Table</h2>
     <div class="example-table-container mat-elevation-z8">
       <md-table #table [dataSource]="dataSource" [style.height.px]="tableHeight">
 
@@ -44,5 +43,11 @@
         <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
         <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
       </md-table>
+      <md-paginator #paginator
+                    [length]="exampleDatabase.data.length"
+                    [pageIndex]="0"
+                    [pageSize]="8"
+                    [pageSizeOptions]="[8, 16, 24, 32]">
+      </md-paginator>      
     </div>
 </div>
